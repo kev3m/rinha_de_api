@@ -1,8 +1,16 @@
 package com.api.rinha_de_backend.entities;
 
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 
+@Entity
+@Table(name = "tbpessoa")
+
 public class Pessoa {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //auto increment no banco de dados
+    @Column(columnDefinition = "serial")
     private Long id;
     private String apelido;
     private String nome;
@@ -10,13 +18,12 @@ public class Pessoa {
     private ArrayList<String> stack;
 
     public Pessoa (String apelido, String nome, String nascimento) {
-
         this.apelido = apelido;
         this.nome = nome;
         this.nascimento = nascimento;
         this.stack = new ArrayList<>();
     }
-    
+
     public Long getId() {
         return id;
     }
