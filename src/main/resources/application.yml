@@ -7,7 +7,7 @@ spring:
       pool-name: plataforma-database-pool
       auto-commit: false
       connection-timeout: 30000
-    url: jdbc:postgresql://localhost:5432/rinha_de_api
+    url: jdbc:postgresql://0.0.0.0:5432/rinha_api
     username: postgres
     password: 123
     type: com.zaxxer.hikari.HikariDataSource
