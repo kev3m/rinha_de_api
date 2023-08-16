@@ -1,5 +1,6 @@
 package com.api.rinha_de_backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -9,14 +10,19 @@ import java.util.ArrayList;
 
 public class Pessoa {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //auto increment no banco de dados
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //auto increment do id no banco de dados
+
     @Column(columnDefinition = "serial")
-    private Long id;
+    private long Id;
     private String apelido;
     private String nome;
     private String nascimento;
+
     private ArrayList<String> stack;
 
+    public Pessoa(){
+        // É necessário para que o JPA possa criar instâncias da classe durante o processo de persistência
+    }
     public Pessoa (String apelido, String nome, String nascimento) {
         this.apelido = apelido;
         this.nome = nome;
@@ -24,11 +30,12 @@ public class Pessoa {
         this.stack = new ArrayList<>();
     }
 
-    public Long getId() {
-        return id;
+    @JsonProperty("id")
+    public long getId() {
+        return Id;
     }
     public void setId(Long id) {
-        this.id = id;
+        this.Id = id;
     }
     public String getApelido() {
         return apelido;
